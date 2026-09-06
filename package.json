@@ -1,0 +1,22 @@
+{
+  "name": "spider-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Spider Intelligence - open-source, modular, local-first AI platform.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}
