@@ -1,0 +1,17 @@
+{
+  "name": "spider-browser-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Spider Browser desktop prototype with privacy-first Electron windows",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.cjs && node --check preload.cjs"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
