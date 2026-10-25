@@ -21,6 +21,7 @@ const blockedHosts = new Set([
 
 let controlWindow;
 let activePageWindow;
+let blockingEnabled = true;
 
 function safeHttpUrl(raw) {
   try {
@@ -45,7 +46,7 @@ function installRequestBlocking(ses) {
   ses.webRequest.onBeforeRequest({ urls: ["http://*/*", "https://*/*"] }, (details, callback) => {
     let blocked = false;
     try {
-      blocked = isBlockedHost(new URL(details.url).hostname);
+      blocked = blockingEnabled && isBlockedHost(new URL(details.url).hostname);
     } catch {
       blocked = false;
     }
@@ -126,6 +127,11 @@ ipcMain.handle("spider:open-url", (_event, raw) => {
   if (!checked) return { ok: false, error: "Only valid HTTP(S) URLs are allowed." };
   makePageWindow(checked);
   return { ok: true };
+});
+
+ipcMain.handle("spider:set-blocking", (_event, enabled) => {
+  blockingEnabled = Boolean(enabled);
+  return { ok: true, enabled: blockingEnabled };
 });
 
 ipcMain.handle("spider:navigate", (_event, direction) => {
