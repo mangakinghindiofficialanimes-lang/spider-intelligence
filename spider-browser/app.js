@@ -10,6 +10,10 @@ const askBeforeActions = document.querySelector("#ask-before-actions");
 const minimizeData = document.querySelector("#minimize-data");
 const privacyStatus = document.querySelector("#privacy-status");
 const clearDemo = document.querySelector("#clear-demo");
+const backButton = document.querySelector("#back-button");
+const forwardButton = document.querySelector("#forward-button");
+const reloadButton = document.querySelector("#reload-button");
+const desktopBridge = window.spiderDesktop;
 
 function normalizeAddress(value) {
   const input = value.trim();
@@ -34,15 +38,43 @@ navigateForm.addEventListener("submit", (event) => {
     navigationHint.textContent = "Please enter a valid HTTP(S) website or search query.";
     return;
   }
-  navigationHint.textContent = "Opening " + url + " in your system browser. This web preview cannot embed every website.";
-  window.open(url, "_blank", "noopener,noreferrer");
+  if (desktopBridge?.openUrl) {
+    navigationHint.textContent = "Opening in Spider Browser desktop window…";
+    desktopBridge.openUrl(url).then((result) => {
+      navigationHint.textContent = result?.ok ? "Opened in Spider Browser desktop window." : (result?.error || "Could not open this address.");
+    }).catch(() => { navigationHint.textContent = "Could not open this address."; });
+  } else {
+    navigationHint.textContent = "Opening " + url + " in your system browser. This web preview cannot embed every website.";
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 });
 
-blockerToggle.addEventListener("change", () => {
-  blockerStatus.textContent = blockerToggle.checked
-    ? "Blocking enabled in the desktop scaffold. This web preview cannot filter requests made by your system browser."
-    : "Blocking disabled in the desktop scaffold. Existing browser tabs may need to be reloaded.";
+blockerToggle.addEventListener("change", async () => {
+  if (desktopBridge?.setBlocking) {
+    try {
+      const result = await desktopBridge.setBlocking(blockerToggle.checked);
+      blockerStatus.textContent = result?.ok ? (blockerToggle.checked ? "Blocking enabled. Reload open pages to apply." : "Blocking disabled. Reload open pages to apply.") : (result?.error || "Could not change blocking state.");
+    } catch { blockerStatus.textContent = "Could not change blocking state."; }
+  } else {
+    blockerStatus.textContent = blockerToggle.checked
+      ? "Blocking setting selected. This web preview cannot filter requests made by your system browser."
+      : "Blocking setting disabled for a future desktop session; this preview cannot filter system-browser traffic.";
+  }
 });
+
+async function navigateDesktop(direction) {
+  if (!desktopBridge?.navigate) {
+    navigationHint.textContent = "Back, forward, and reload controls work in the desktop app; this web preview uses your system browser.";
+    return;
+  }
+  try {
+    const result = await desktopBridge.navigate(direction);
+    navigationHint.textContent = result?.ok ? "Browser navigation updated." : (result?.error || "No active browser page.");
+  } catch { navigationHint.textContent = "Browser navigation failed."; }
+}
+backButton.addEventListener("click", () => navigateDesktop("back"));
+forwardButton.addEventListener("click", () => navigateDesktop("forward"));
+reloadButton.addEventListener("click", () => navigateDesktop("reload"));
 
 researchForm.addEventListener("submit", (event) => {
   event.preventDefault();
