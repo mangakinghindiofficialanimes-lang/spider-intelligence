@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Spider Browser — privacy-focused browsing and AI research prototype">
+  <title>Spider Browser</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Spider Browser home"><span class="brand-mark">🕷</span><span>SPIDER <small>BROWSER</small></span></a>
+    <span class="privacy-chip"><span class="dot"></span> Privacy mode</span>
+  </header>
+  <main class="layout">
+    <section class="hero">
+      <p class="eyebrow">SPIDER INTELLIGENCE · WEB MODULE</p>
+      <h1>Your web.<br><span>With more control.</span></h1>
+      <p class="subhead">Browse, research, and keep common ad and tracker requests out of the way.</p>
+      <form id="navigate-form" class="address-form">
+        <label class="sr-only" for="address">Search the web or enter a website</label>
+        <span aria-hidden="true">⌕</span>
+        <input id="address" name="address" type="text" inputmode="url" placeholder="Search or enter a website…" autocomplete="url" required>
+        <button type="submit">Go</button>
+      </form>
+      <p class="hint" id="navigation-hint">Android web preview opens links in your system browser. Desktop app opens a managed browser window.</p>
+    </section>
+    <section class="cards" aria-label="Browser controls">
+      <article class="card blocker-card">
+        <div class="card-head"><span class="icon">⛨</span><span class="status">ON</span></div>
+        <h2>Ad & tracker blocking</h2>
+        <p>Block known ad networks and tracking hosts. More complete filter-list support is planned.</p>
+        <label class="switch-row" for="blocker-toggle"><span>Enable blocking in desktop app</span><input id="blocker-toggle" type="checkbox" checked><span class="switch"></span></label>
+        <p class="small-note" id="blocker-status">Blocking enabled in this prototype's desktop configuration.</p>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="icon">◈</span><span class="tag">AI</span></div>
+        <h2>Research with Spider</h2>
+        <p>Ask for a summary, compare sources, or extract key facts. This demo does not send requests to an AI service yet.</p>
+        <form id="research-form" class="research-form">
+          <label class="sr-only" for="research-prompt">Research question</label>
+          <input id="research-prompt" type="text" placeholder="What do you want to research?" required>
+          <button type="submit">Prepare</button>
+        </form>
+        <div id="research-result" class="result" aria-live="polite">Spider will show its research plan here.</div>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="icon">⌑</span><span class="tag">LOCAL</span></div>
+        <h2>Privacy controls</h2>
+        <p>Choose how the prototype behaves. These controls are local UI preferences, not a promise of anonymous browsing.</p>
+        <label class="check-row"><input type="checkbox" id="ask-before-actions" checked> Ask before sensitive actions</label>
+        <label class="check-row"><input type="checkbox" id="minimize-data" checked> Minimize data sent to AI</label>
+        <button class="secondary full" id="clear-demo" type="button">Clear this session's demo text</button>
+        <p class="small-note" id="privacy-status" aria-live="polite">Sensitive actions: confirmation required.</p>
+      </article>
+    </section>
+    <section class="notice">
+      <strong>Prototype notice</strong>
+      <p>Ad blocking is not yet comprehensive. Android's system browser is used for opened pages in this web preview. A full Android browser needs a native browser engine; desktop browsing uses the separate Electron scaffold.</p>
+    </section>
+  </main>
+  <footer>Spider Intelligence · Browser prototype · No account or tracking SDK is included</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
