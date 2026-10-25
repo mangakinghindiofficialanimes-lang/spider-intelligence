@@ -1,0 +1,31 @@
+name: Spider Browser prototype checks
+
+on:
+  pull_request:
+    paths:
+      - "spider-browser/**"
+      - ".github/workflows/spider-browser-check.yml"
+  push:
+    branches: [main]
+    paths:
+      - "spider-browser/**"
+      - ".github/workflows/spider-browser-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check desktop JavaScript syntax
+        working-directory: spider-browser/desktop
+        run: |
+          node --check main.cjs
+          node --check preload.cjs
+      - name: Check browser UI JavaScript syntax
+        run: node --check spider-browser/app.js
