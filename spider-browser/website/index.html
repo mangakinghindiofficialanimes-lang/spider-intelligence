@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Spider Browser by Spider AI — privacy-focused browsing, ad and tracker blocking, and AI-assisted research.">
+  <title>Spider Browser — spider-apis</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--panel:#141b2e;--text:#f5f7ff;--muted:#aab5cb;--line:#2b3852;--accent:#aebaff;--green:#8ce6c4}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#263465 0,transparent 50%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+    header,main,footer{max-width:1080px;margin:auto;padding-left:22px;padding-right:22px}header{padding-top:24px;padding-bottom:24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff15}
+    .brand{font-weight:900;letter-spacing:.1em}.brand small{display:block;font-size:11px;color:var(--muted);letter-spacing:.2em}.pill{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:6px 11px;color:var(--green)}
+    .hero{padding-top:80px;padding-bottom:72px;max-width:800px}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.18em;font-weight:800}.hero h1{font-size:clamp(42px,8vw,76px);line-height:1.02;letter-spacing:-.05em;margin:15px 0 22px}.hero h1 span{color:var(--accent)}.hero p{color:var(--muted);font-size:18px;max-width:650px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{display:inline-block;padding:12px 18px;border-radius:13px;text-decoration:none;font-weight:800;background:var(--accent);color:#101629}.button.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:48px}.card{border:1px solid var(--line);background:linear-gradient(150deg,#182239,var(--panel));border-radius:20px;padding:22px}.card h2{font-size:20px}.card p{color:var(--muted);font-size:14px}.notice{border-left:3px solid var(--accent);padding:14px 18px;background:#ffffff08;border-radius:0 12px 12px 0;margin-bottom:55px}.notice p{font-size:14px;color:var(--muted)}footer{padding-top:24px;padding-bottom:30px;border-top:1px solid #ffffff15;color:var(--muted);font-size:12px}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding-top:54px;padding-bottom:48px}.pill{font-size:10px}}
+  </style>
+</head>
+<body>
+  <header><div class="brand">🕷 SPIDER AI <small>BROWSER · SPIDER-APIS</small></div><span class="pill">Privacy-first design</span></header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">MEET SPIDER BROWSER</div>
+      <h1>Browse with control.<br><span>Research with AI.</span></h1>
+      <p>A browser project focused on useful AI research, ad and tracker blocking, and privacy controls across desktop and mobile-friendly experiences.</p>
+      <div class="actions"><a class="button" href="../index.html">Open browser prototype</a><a class="button secondary" href="../PRIVACY-ARCHITECTURE.md">Privacy architecture</a></div>
+    </section>
+    <section class="grid" aria-label="Features">
+      <article class="card"><h2>Ad & tracker blocking</h2><p>Designed to use maintained filter lists and per-site controls. The current prototype's small blocklist is incomplete.</p></article>
+      <article class="card"><h2>AI-assisted research</h2><p>Planned source comparisons, summaries, and page understanding with confirmation before sensitive actions.</p></article>
+      <article class="card"><h2>Private sessions</h2><p>Designed to clear local session data. Private browsing cannot guarantee anonymity from internet providers or websites.</p></article>
+    </section>
+    <aside class="notice"><strong>Development preview</strong><p>This is a project landing page, not a claim that spiderapis.com is already registered or live. No AI backend, production-grade ad blocker, VPN, or anonymity service is provided by this prototype.</p></aside>
+  </main>
+  <footer>Spider Browser by Spider AI · Project identity: spider-apis · Development preview</footer>
+</body>
+</html>
