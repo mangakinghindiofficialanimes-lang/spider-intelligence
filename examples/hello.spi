@@ -1,0 +1,5 @@
+spider::main {
+    output("Hello from Spider!")
+    let answer = 40 + 2
+    output(answer)
+}
