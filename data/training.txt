@@ -1,1 +1,10 @@
-Spider Intelligence is a learning project. Spider is a neural network that learns patterns from text. Training adjusts model parameters. A tokenizer converts text into tokens. The brain predicts the next character from previous characters. This is the beginning of Spider Intelligence.
+Spider Intelligence is an experimental artificial intelligence project. Our goal is to develop learning systems through engineering, experiments, and evaluation.
+A neural network contains parameters that change during training. Examples provide feedback about predictions. An optimizer updates parameters to reduce a loss function. Training loss alone does not prove that a model understands language or generalizes.
+Language is made of sequences. A tokenizer converts text into discrete tokens. A language model learns patterns in token sequences and predicts what may come next. Evaluation on held-out text helps measure generalization.
+UTF-8 represents Unicode text as bytes. A byte-level tokenizer can represent any text. Byte pair encoding merges frequent adjacent token pairs to build a larger vocabulary.
+Attention combines information from positions in a sequence. Causal attention prevents a position from using future tokens. Positional embeddings represent sequence order. Feed-forward layers transform representations. Residual connections and normalization support optimization.
+Good datasets should be diverse, accurate, relevant, and legally obtained. Repeated examples can cause memorization. Validation data should be separate from training data.
+Spider Brain starts with randomly initialized weights. No pretrained weights are used. The first goal is a tokenizer, dataset pipeline, model, training loop, checkpoint system, and evaluation procedure.
+Experiments should record configuration, training loss, validation loss, runtime, and dataset details. Random seeds and saved configurations help compare runs. A small prototype is not yet a capable assistant.
+AI includes language processing, computer vision, speech recognition, speech synthesis, planning, and other areas. Each requires data and computation. Modular systems can combine components.
+Spider Intelligence will be developed incrementally. Each version should have measurable goals, tests, documentation, and honest limitations.

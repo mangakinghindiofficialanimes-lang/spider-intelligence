@@ -1,0 +1,1 @@
+CONFIG={"vocab_size":320,"block_size":64,"batch_size":16,"embedding_dim":64,"heads":4,"layers":2,"learning_rate":3e-4,"steps":500,"eval_interval":50,"eval_batches":5,"seed":42}
