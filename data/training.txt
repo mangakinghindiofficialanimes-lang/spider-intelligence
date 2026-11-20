@@ -1,0 +1,1 @@
+Spider Intelligence is a learning project. Spider is a neural network that learns patterns from text. Training adjusts model parameters. A tokenizer converts text into tokens. The brain predicts the next character from previous characters. This is the beginning of Spider Intelligence.
